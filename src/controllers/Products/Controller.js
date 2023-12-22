@@ -1,7 +1,7 @@
 import Products from "../../models/Products.js";
 import Validation from "../../utils/Validation.js";
 import { ConflictData, NotExistValue, NotValid } from "../../utils/Error.js";
-
+import { v4 as uuidv4 } from "uuid";
 class ProductController {
   async GetProducts(req, res) {
     try {
@@ -21,8 +21,10 @@ class ProductController {
       price,
       is_physical,
       stock,
+      file_url,
     } = req.body;
     try {
+      const cod_product = uuidv4();
       await new Validation({
         user_id,
         url_banner_product,
@@ -30,6 +32,7 @@ class ProductController {
         description,
         price,
         stock,
+        file_url,
       }).Check();
       const product_created = await Products.create({
         user_id,
@@ -39,6 +42,7 @@ class ProductController {
         price,
         is_physical,
         stock,
+        cod_product,
       });
       res.status(200).json({
         message: "Sucesso. Produto cadastrado",

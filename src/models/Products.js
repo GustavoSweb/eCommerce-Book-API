@@ -44,6 +44,8 @@ class Products {
     price,
     is_physical,
     stock,
+    file_url,
+    cod_product,
   }) {
     try {
       if (is_physical != "0" && is_physical != "1")
@@ -57,6 +59,8 @@ class Products {
           price,
           is_physical,
           stock,
+          cod_product,
+          file_url,
         })
         .into("products");
     } catch (err) {

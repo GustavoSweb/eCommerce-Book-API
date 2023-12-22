@@ -28,7 +28,10 @@ app.use("/", ProductsRouter);
 })();
 
 app.get("/", (req, res) => {
-  res.send("Api TeflyClass");
+  res.send("Api ebook ngrok ");
+});
+app.post("/notifications", (req, res) => {
+  console.log(req.body);
 });
 
 export default app;
