@@ -1,0 +1,22 @@
+{
+  "name": "ecommerce-book-api",
+  "version": "0.1.0",
+  "description": "Api para a plataforma de vendas de livros. Tecnologias usadas: Nodejs, Stripe",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GustavoSweb/eCommerce-Book-API.git"
+  },
+  "author": "GustavSweb",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GustavoSweb/eCommerce-Book-API/issues"
+  },
+  "homepage": "https://github.com/GustavoSweb/eCommerce-Book-API#readme"
+}
