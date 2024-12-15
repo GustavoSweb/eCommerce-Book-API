@@ -1,6 +1,6 @@
 import database from "../database/connection.js";
 import { NotValid, NotExistValue, ConflictData } from "../utils/Error.js";
-import PasswordToken from '../models/PasswordToken.js';
+import PasswordToken from "../models/PasswordToken.js";
 import bcrypt from "bcrypt";
 class User {
   async delete({ id }) {
@@ -72,17 +72,15 @@ class User {
         .table("users");
       return data;
     } catch (err) {
-    throw err
+      throw err;
     }
   }
-  async create({ name, email, password, school_id,  classroom_id }) {
+  async create({ name, email, password }) {
     try {
       const user = await this.findOne({ email });
       if (user) throw new ConflictData("Usuario ja esta cadastrado");
       var hash = await bcrypt.hash(password, 10);
-     await database
-        .insert({ name, email, password: hash, school_id,  classroom_id})
-        .into("users");
+      await database.insert({ name, email, password: hash }).into("users");
     } catch (err) {
       throw err;
     }
@@ -94,13 +92,13 @@ class User {
         .update({ password })
         .where({ id })
         .table("users");
-        if (user[0] <= 0) throw new NotExistValue("Usuario não existe");
-        await PasswordToken.AlterStatus({token})
+      if (user[0] <= 0) throw new NotExistValue("Usuario não existe");
+      await PasswordToken.AlterStatus({ token });
     } catch (err) {
-      console.log(err)
+      console.log(err);
       throw err;
     }
   }
 }
 
-export default new User()
+export default new User();
