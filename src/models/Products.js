@@ -2,7 +2,7 @@ import database from "../database/connection.js";
 import { NotValid, NotExistValue, ConflictData } from "../utils/Error.js";
 import PasswordToken from "../models/PasswordToken.js";
 import bcrypt from "bcrypt";
-class User {
+class Products {
   async findOne(OneDate) {
     if (!OneDate) throw new Error("Falta de parametros no findOne");
     const key = Object.keys(OneDate);
@@ -43,6 +43,7 @@ class User {
     description,
     price,
     is_physical,
+    stock,
   }) {
     try {
       if (is_physical != "0" && is_physical != "1")
@@ -55,12 +56,13 @@ class User {
           description,
           price,
           is_physical,
+          stock,
         })
-        .into("users");
+        .into("products");
     } catch (err) {
       throw err;
     }
   }
 }
 
-export default new User();
+export default new Products();

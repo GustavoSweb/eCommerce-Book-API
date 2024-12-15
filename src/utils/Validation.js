@@ -1,4 +1,4 @@
-import { NotValid } from "./Error.js"
+import { NotValid } from "./Error.js";
 
 const names = {
   name: "Nome",
@@ -42,4 +42,4 @@ class Validation {
   }
 }
 
-export default Validation
+export default Validation;
