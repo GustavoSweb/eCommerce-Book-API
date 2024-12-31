@@ -8,7 +8,6 @@ const app = express();
 
 import UserRouter from "./routes/User.js";
 import ProductsRouter from "./routes/Products.js";
-import TokenRouter from "./routes/Tokens.js";
 
 import cors from "cors";
 app.use(cors());
@@ -19,7 +18,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/", UserRouter);
 app.use("/", ProductsRouter);
 
-(async (main) => {
+(async () => {
   try {
     await mongoose.connect(process.env.MONGODB_URL);
   } catch (err) {
@@ -29,9 +28,6 @@ app.use("/", ProductsRouter);
 
 app.get("/", (req, res) => {
   res.send("Api ebook ngrok ");
-});
-app.post("/notifications", (req, res) => {
-  console.log(req.body);
 });
 
 export default app;
