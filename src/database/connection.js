@@ -1,16 +1,11 @@
 import knex from "knex";
+import dotenv from "dotenv";
+dotenv.config();
 
 const connection = {
-  client: "mysql2",
-  connection: {
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: "123456",
-    database: "ecommercebook",
-  },
+  client: "pg",
+  connection: process.env.DATABASE_URL,
 };
-
 const db = knex(connection);
 
 export default db;
